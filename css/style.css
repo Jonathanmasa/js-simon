@@ -1,5 +1,7 @@
 /* Generics */
 
+
+
 /* # COUNTDOWN */
 
 #countdown {
@@ -14,4 +16,8 @@
 
 input {
 	width: 80px !important;
+}
+
+.d-none {
+	display: block !important;
 }
