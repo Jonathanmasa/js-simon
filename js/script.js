@@ -1,6 +1,4 @@
 // variabili globali
-console.log("EHI");
-
 
 // numeri casuali generati
 let randomNumbers = [];
@@ -21,20 +19,23 @@ const submitButton = document.querySelector('#answer-form button');
 // genero 5 numeri casuali
 function generateRandomNumbers() {
     const numbers = new Set();
-    while (numbers.size < 5) {
+    while (numbers.size < countdown) {
         // imposto numeri casuali da 1 a 50
         const randomNumber = Math.floor(Math.random() * 50) + 1;
         numbers.add(randomNumber);
     }
     // salvo i numeri nella variabile globale
-    randomNumbers = Array.from(numbers);
+    return Array.from(numbers);
 }
 
 
+
 // mostro i numeri random in pagina
-function displayNumbers() {
+function displayNumbers(numbers) {
+    console.log('numeri da visualizzare', numbers);
     
-    numbersList.innerHTML = randomNumber.map(num => `<li>${num}</li>`).join('');
+    
+    numbersList.innerHTML = numbers.map(num => `<li>${num}</li>`).join('');
     
 }
 
@@ -43,6 +44,7 @@ function toggleVisibility() {
     numbersList.classList.add('d-none');
     answerForm.classList.remove('d-none');
 }
+
 
 // valuto risposta utente
 function checkAnswer() {
@@ -63,7 +65,7 @@ function initializeGame() {
 // timer 5 secondi
 const timer = setInterval(() => {
     countdown--;
-    countdownElement.textContent = `tempo rimanente: ${countdown}s`;
+    countdownElement.textContent = `${countdown}s`;
     if (countdown <= 0) {
         clearInterval(timer);
         toggleVisibility();
